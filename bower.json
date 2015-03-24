@@ -1,0 +1,21 @@
+{
+  "name": "globeie-proxy-monitor",
+  "version": "0.1.7",
+  "authors": [
+    "周培公 <peigong@foxmail.com>"
+  ],
+  "description": "GLOBEIE 考勤机的WEB代理和监视器",
+  "license": "MIT",
+  "dependencies": {
+    "almond": "~0.3.0",
+    "jquery": ">= 1.9.0",
+    "bootstrap": "~3.1.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

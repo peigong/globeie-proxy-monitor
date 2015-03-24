@@ -1,0 +1,17 @@
+{
+  "name": "globeie-proxy-monitor",
+  "version": "0.1.7",
+  "authors": [
+    "周培公 <peigong@foxmail.com>"
+  ],
+  "description": "GLOBEIE 考勤机的WEB代理和监视器",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-replace": "~0.7.7",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-requirejs": "~0.4.4"
+  }
+}
