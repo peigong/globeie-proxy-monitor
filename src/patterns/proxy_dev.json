@@ -1,0 +1,9 @@
+{
+    "patterns": [ 
+        { "match": "FETCH", "replacement": "http://127.0.0.1/dist/att/proxy/fetch.php" },
+        { "match": "SETTINGS", "replacement": "http://127.0.0.1/dist/att/proxy/settings.php" },
+        { "match": "WARNING", "replacement": "http://127.0.0.1/dist/att/proxy/warning.php" },
+        { "match": "ADS", "replacement": "http://127.0.0.1/dist/att/ads/fetch.php" },
+        { "match": "IMG_BASE", "replacement": "http://127.0.0.1/dist/att" } 
+    ]
+}

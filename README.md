@@ -10,15 +10,11 @@
 	- `npm install -g grunt` 
 	- `npm install -g bower` 
 
-### 安装Composer ###
+### 安装PHP和Composer ###
 
-1. 检查环境变量，将PHP的安装路径添加到系统目录环境变量。
+1. 参照`http://www.wampserver.com/en/`，安装PHP集成环境。
 2. 检查php.ini配置文件，使用`;`注释掉`open_basedir`、`disable_functions`、`disable_classes`三个配置。
-3. 如果当前项目下没有bin目录，创建bin目录。
-4. 在命令行中执行`curl -sS https://getcomposer.org/installer | php -- --install-dir=bin`。
-5. 如果没有安装curl命令，则需要安装，参考[Windows下安装使用curl命令(http://jingyan.baidu.com/article/a681b0dec4c67a3b1943467c.html)](http://jingyan.baidu.com/article/a681b0dec4c67a3b1943467c.html)和[windows下curl的安装和简单使用(http://www.tuicool.com/articles/Ar6vymf)](http://www.tuicool.com/articles/Ar6vymf)。
-
-**备注：**`bin/composer.phar`和`composer.lock`是冗余文件，在版本控制系统中忽略掉较好。
+4. 参照`https://getcomposer.org/doc/00-intro.md#using-the-installer`，安装composer。
 
 ## 开发构建 ##
 
@@ -28,7 +24,7 @@
 
 1. `bower install`
 2. `npm install`
-3. `php bin/composer.phar install`
+3. `composer install`
 
 ### 自动构建 ###
 

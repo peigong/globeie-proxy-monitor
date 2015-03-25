@@ -1,0 +1,10 @@
+{
+    "patterns": [ 
+        { "match": "TOPLIMIT101", "replacement": 300 },
+        { "match": "THRESHOLD101", "replacement": 0.5 },
+        { "match": "TOPLIMIT102", "replacement": 300 },
+        { "match": "THRESHOLD102", "replacement": 0.05 },
+        { "match": "TOPLIMIT_DEFAULT", "replacement": 100 },
+        { "match": "THRESHOLD_DEFAULT", "replacement": 0.1 }
+    ]
+}

@@ -1,0 +1,5 @@
+{
+    "patterns": [ 
+        { "match": "SERVICE", "replacement": "http://10.0.7.5/shishi_all.asp" } 
+    ]
+}

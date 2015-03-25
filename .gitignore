@@ -1,11 +1,8 @@
-node_modules
-bower_components
+#
+dist
 
 vendor
 composer.lock
-bin/composer.phar
 
-dist/temp/*
-dist/dev/*
-dist/att/images/*.jpg
-dist/att/default/images/*.jpg
+node_modules
+bower_components

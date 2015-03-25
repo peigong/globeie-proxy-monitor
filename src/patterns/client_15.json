@@ -1,0 +1,6 @@
+{
+    "patterns": [ 
+        { "match": "DEVICE", "replacement": "3" },
+        { "match": "FLOOR", "replacement": "15" } 
+    ]
+}
