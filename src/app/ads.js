@@ -1,8 +1,4 @@
-define(['app/utils',
-    'app/settings/ads', 'app/settings/client', 'app/settings/proxy',
-    'app/counter'
-    ], function(utils, ads, client, proxy, Counter){
-
+define(['app/utils', 'app/counter'], function(utils, Counter){
     var counter = Counter.create(client.floor);
 
     function showCarousel(images){
@@ -70,7 +66,16 @@ define(['app/utils',
         });
     }
 
-    return { 
-        show: show 
+    function Ads(ads, client, proxy, errors){
+        this.settings = {
+            ads: ads,
+            proxy: proxy
+        };
+        this.counter = new Counter(client, proxy, errors);
+    }
+    Ads.prototype = { 
+        show: function(){} 
     };
+
+    return Ads;
 });

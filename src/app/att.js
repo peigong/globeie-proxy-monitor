@@ -1,8 +1,4 @@
-define(['app/utils',
-    'app/settings/errors', 'app/settings/client', 'app/settings/proxy',
-    'app/focus', 'app/counter'
-    ], function(utils, errors, client, proxy, focus, Counter){
-
+define(['app/utils', 'app/monitor', 'app/counter'], function(utils, Monitor, Counter){
     var timer = null, 
         monitor = focus.create(client.floor),
         counter = Counter.create(client.floor);
@@ -46,10 +42,20 @@ define(['app/utils',
         });
     }
 
-    return {
+    function Att(client, proxy, errors){
+        this.settings = {
+            client: client,
+            proxy: proxy
+        };
+        this.monitor = new Monitor(client, proxy);
+        this.counter = new Counter(client, proxy, errors);
+    }
+    Att.prototype = {
         start: function(){
-            update();
-            monitor.start();
+            this.update();
+            this.monitor.start();
         }
     };
+
+    return Att;
 });

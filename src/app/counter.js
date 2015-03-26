@@ -1,9 +1,10 @@
 /**
 * @module {counter} 错误计数器。
 */
-define(['request', 'app/settings/errors', 'app/settings/proxy'], function(request, errors, proxy){
-    function ErrorCounter(floor){
-        this.floor = floor;
+define(['request'], function(request){
+    function ErrorCounter(client, proxy, errors){
+        this.floor = client.floor;
+        this.settings = { proxy: proxy, errors: errors };
         this.total = {};
         this.counter = {};
         this.r = new request.Request();
@@ -51,9 +52,5 @@ define(['request', 'app/settings/errors', 'app/settings/proxy'], function(reques
         }
     };
 
-    return {
-        create: function(floor){
-            return new ErrorCounter(floor);
-        }
-    };
+    return ErrorCounter;
 });

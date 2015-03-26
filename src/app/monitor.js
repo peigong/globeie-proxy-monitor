@@ -1,14 +1,15 @@
 /**
 * @module {focus} 打卡密集处理模块。
 */
-define(['request', 
-    'app/utils', 
-    'app/settings/proxy'], function(request, utils, proxy){
+define(['request', 'app/utils'], function(request, utils){
 
     var minute = 60 * 1e3;
 
-    function FocusMonitor(floor){
-        this.floor = floor;
+    function FocusMonitor(client, proxy){
+        this.settings = {
+            proxy: proxy
+        };
+        this.floor = client.floor;
         this.counter = 0;
         this.mark = '';
         this.dateFilter = { include: {}, exclude: {} };
@@ -139,9 +140,5 @@ define(['request',
         }
     };
 
-    return {
-        create: function(floor){
-            return new FocusMonitor(floor);
-        }
-    };
+    return FocusMonitor;
 });
