@@ -12,27 +12,27 @@ module.exports = function(grunt) {
       dist: {
         files: [
           /*- 服务端 -*/
-          { expand: true, cwd: 'vendor', src: ['phpmailer/phpmailer/PHPMailerAutoload.php', 'phpmailer/phpmailer/class.**.php'], dest: 'dist/att/proxy/vendor' },
-          { expand: true, cwd: 'src/att/ads', src: ['fetch.php'], dest: 'dist/att/ads' },
-          { expand: true, cwd: 'src/att/proxy', src: ['errors.conf.php', 'warning.php', 'settings.php'], dest: 'dist/att/proxy' },
-          { expand: true, cwd: 'res', src: ['**'], dest: 'dist/att/haixuan' },
-          { expand: true, cwd: 'res', src: ['**'], dest: 'dist/att/haixuan/default' },
-          { expand: true, cwd: 'src/att/config', src: ['**'], dest: 'dist/att/config' },
+          { expand: true, cwd: 'vendor', src: ['phpmailer/phpmailer/PHPMailerAutoload.php', 'phpmailer/phpmailer/class.**.php'], dest: 'dist/server/att/proxy/vendor' },
+          { expand: true, cwd: 'src/att/ads', src: ['fetch.php'], dest: 'dist/server/att/ads' },
+          { expand: true, cwd: 'src/att/proxy', src: ['errors.conf.php', 'warning.php', 'settings.php'], dest: 'dist/server/att/proxy' },
+          { expand: true, cwd: 'res', src: ['**'], dest: 'dist/server/att/haixuan' },
+          { expand: true, cwd: 'res', src: ['**'], dest: 'dist/server/att/haixuan/default' },
+          { expand: true, cwd: 'src/att/config', src: ['**'], dest: 'dist/server/att/config' },
           /*- 客户端 -*/
           { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'monitor.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' },
-          { expand: true, cwd: 'src/moniter', src: ['index.html', 'css/**'], dest: 'dist/f13' },
-          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/f13/js/libs' },
-          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/f13/js/libs/bootstrap' },
-          { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/**'], dest: 'dist/all' },
-          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/all/js/libs' },
-          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/all/js/libs/bootstrap' }
+          { expand: true, cwd: 'src/moniter', src: ['index.html', 'css/**'], dest: 'dist/client/f13' },
+          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/client/f13/js/libs' },
+          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/client/f13/js/libs/bootstrap' },
+          { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/**'], dest: 'dist/client/all' },
+          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/client/all/js/libs' },
+          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/client/all/js/libs/bootstrap' }
         ]
       },
       clone: {
         files: [ 
-          { expand: true, cwd: 'dist/f13', src: ['**'], dest: 'dist/dev' },
-          { expand: true, cwd: 'dist/f13', src: ['**'], dest: 'dist/f14' },
-          { expand: true, cwd: 'dist/f13', src: ['**'], dest: 'dist/f15' }
+          { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/dev' },
+          { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/f14' },
+          { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/f15' }
         ]
       }
     },
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       globeie: {
         options: grunt.file.readJSON('src/patterns/globeie.json'),
         files: [
-          { expand: true, flatten: true, src: ['src/att/proxy/fetch.php'], dest: 'dist/att/proxy'}
+          { expand: true, flatten: true, src: ['src/att/proxy/fetch.php'], dest: 'dist/server/att/proxy'}
         ]
       },
       client13: {
@@ -106,35 +106,35 @@ module.exports = function(grunt) {
         options: {
           name: 'app/main/all',
           baseUrl: "dist/temp/js",
-          out: "dist/all/js/app.js",
+          out: "dist/client/all/js/app.js",
         }
       },
       dev: {
         options: {
           name: 'app/main/dev',
           baseUrl: "dist/temp/js",
-          out: "dist/dev/js/app.js",
+          out: "dist/client/dev/js/app.js",
         }
       },
       f13: {
         options: {
           name: 'app/main/f13',
           baseUrl: "dist/temp/js",
-          out: "dist/f13/js/app.js",
+          out: "dist/client/f13/js/app.js",
         }
       },
       f14: {
         options: {
           name: 'app/main/f14',
           baseUrl: "dist/temp/js",
-          out: "dist/f14/js/app.js",
+          out: "dist/client/f14/js/app.js",
         }
       },
       f15: {
         options: {
           name: 'app/main/f15',
           baseUrl: "dist/temp/js",
-          out: "dist/f15/js/app.js",
+          out: "dist/client/f15/js/app.js",
         }
       }
     }
