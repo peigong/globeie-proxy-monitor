@@ -19,18 +19,16 @@ module.exports = function(grunt) {
           { expand: true, cwd: 'res', src: ['**'], dest: 'dist/server/att/haixuan/default' },
           { expand: true, cwd: 'src/att/config', src: ['**'], dest: 'dist/server/att/config' },
           /*- 客户端 -*/
-          { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'monitor.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' },
-          { expand: true, cwd: 'src/moniter', src: ['index.html', 'css/**'], dest: 'dist/client/f13' },
           { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/client/f13/js/libs' },
           { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/client/f13/js/libs/bootstrap' },
+          { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'monitor.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' },
+          { expand: true, cwd: 'src/moniter', src: ['css/**'], dest: 'dist/client/f13' },
           { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/**'], dest: 'dist/client/all' },
-          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/client/all/js/libs' },
-          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/client/all/js/libs/bootstrap' }
         ]
       },
       clone: {
         files: [ 
-          { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/dev' },
+          { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/all' },
           { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/f14' },
           { expand: true, cwd: 'dist/client/f13', src: ['**'], dest: 'dist/client/f15' }
         ]
@@ -46,19 +44,21 @@ module.exports = function(grunt) {
       client13: {
         options: grunt.file.readJSON('src/patterns/client_13.json'),
         files: [
+          { expand: true, flatten: true, src: ['src/moniter/index.html'], dest: 'dist/client/f13'},
           { expand: true, flatten: true, src: ['src/app/settings/client.js'], dest: 'dist/temp/js/app/settings/f13'}
         ]
       },
       client14: {
         options: grunt.file.readJSON('src/patterns/client_14.json'),
         files: [
-          { expand: true, flatten: true, src: ['src/app/settings/client.js'], dest: 'dist/temp/js/app/settings/f14'},
-          { expand: true, flatten: true, src: ['src/app/settings/client.js'], dest: 'dist/temp/js/app/settings/dev'}
+          { expand: true, flatten: true, src: ['src/moniter/index.html'], dest: 'dist/client/f14'},
+          { expand: true, flatten: true, src: ['src/app/settings/client.js'], dest: 'dist/temp/js/app/settings/f14'}
         ]
       },
       client15: {
         options: grunt.file.readJSON('src/patterns/client_15.json'),
         files: [
+          { expand: true, flatten: true, src: ['src/moniter/index.html'], dest: 'dist/client/f15'},
           { expand: true, flatten: true, src: ['src/app/settings/client.js'], dest: 'dist/temp/js/app/settings/f15'}
         ]
       },
@@ -68,14 +68,8 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings'}
         ]
       },
-      proxy_dev: {
-        options: grunt.file.readJSON('src/patterns/proxy_dev.json'),
-        files: [
-          { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings/dev'}
-        ]
-      },
-      proxy_pro: {
-        options: grunt.file.readJSON('src/patterns/proxy_pro.json'),
+      proxy: {
+        options: grunt.file.readJSON('src/patterns/proxy.json'),
         files: [
           { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings'}
         ]
@@ -97,9 +91,6 @@ module.exports = function(grunt) {
           startFile: [
             'bower_components/almond/almond.js'
           ]
-        },
-        paths: {
-          'request': 'empty:'
         }
       },
       all: {
@@ -107,13 +98,6 @@ module.exports = function(grunt) {
           name: 'app/main/all',
           baseUrl: "dist/temp/js",
           out: "dist/client/all/js/app.js",
-        }
-      },
-      dev: {
-        options: {
-          name: 'app/main/dev',
-          baseUrl: "dist/temp/js",
-          out: "dist/client/dev/js/app.js",
         }
       },
       f13: {

@@ -6,6 +6,7 @@ define(['app/utils'], function(utils){
 
     function FocusMonitor(client, proxy){
         this.settings = {
+            client: client,
             proxy: proxy
         };
         this.floor = client.floor;
@@ -69,9 +70,11 @@ define(['app/utils'], function(utils){
             }
         },
         start: function(){
-            var that = this;
-            var board_date = $.trim($('.date', '#board').html());
-            var board_time = $.trim($('.time', '#board').html());
+            var that = this,
+                client = that.settings.client,
+                container = '#board_' + client.floor;
+            var board_date = $.trim($('.date', container).html());
+            var board_time = $.trim($('.time', container).html());
             if(!!board_date && !!board_time){
                 var date = new Date(), 
                     time = date.getTime(),

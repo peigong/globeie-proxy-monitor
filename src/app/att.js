@@ -42,17 +42,20 @@ define(['app/utils', 'app/monitor', 'app/counter'], function(utils, Monitor, Cou
             });
         },
         refresh: function(data){
+            var that = this,
+                client = that.settings.client,
+                container = '#board_' + client.floor;
             if(data.hasOwnProperty('number') &&
                 data.hasOwnProperty('name') &&
                 data.hasOwnProperty('time')){
 
                 var date = data.time.split(' ');
-                var old_time = $.trim($('.time', '#board').html());
+                var old_time = $.trim($('.time', container).html());
                 if(old_time != date[1]){
-                    $('.number', '#warp').html(data.number);
-                    $('.name', '#warp').html(data.name);
-                    $('.date', '#warp').html(date[0]);
-                    $('.time', '#warp').html(date[1]);
+                    $('.number', container).html(data.number);
+                    $('.name', container).html(data.name);
+                    $('.date', container).html(date[0]);
+                    $('.time', container).html(date[1]);
                 }
             }
         }
