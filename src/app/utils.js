@@ -1,5 +1,10 @@
 define([], function(){
     var exports = {};
+
+    function send(uri, data){
+        $.get(uri, data);
+    }
+    exports.send = send;
     
     function jsonp(uri, data, success, error){
         $.ajax({ 

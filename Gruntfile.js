@@ -19,11 +19,13 @@ module.exports = function(grunt) {
           { expand: true, cwd: 'res', src: ['**'], dest: 'dist/att/haixuan/default' },
           { expand: true, cwd: 'src/att/config', src: ['**'], dest: 'dist/att/config' },
           /*- 客户端 -*/
+          { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'monitor.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' },
+          { expand: true, cwd: 'src/moniter', src: ['index.html', 'css/**'], dest: 'dist/f13' },
           { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/f13/js/libs' },
           { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/f13/js/libs/bootstrap' },
-          { expand: true, cwd: 'src/moniter', src: ['index.html', 'css/**'], dest: 'dist/f13' },
           { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/**'], dest: 'dist/all' },
-          { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'focus.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' }
+          { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/all/js/libs' },
+          { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/all/js/libs/bootstrap' }
         ]
       },
       clone: {
@@ -63,10 +65,7 @@ module.exports = function(grunt) {
       errors: {
         options: grunt.file.readJSON('src/patterns/errors.json'),
         files: [
-          { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings/dev'},
-          { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings/f13'},
-          { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings/f14'},
-          { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings/f15'}
+          { expand: true, flatten: true, src: ['src/app/settings/errors.js'], dest: 'dist/temp/js/app/settings'}
         ]
       },
       proxy_dev: {
@@ -78,9 +77,7 @@ module.exports = function(grunt) {
       proxy_pro: {
         options: grunt.file.readJSON('src/patterns/proxy_pro.json'),
         files: [
-          { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings/f13'},
-          { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings/f14'},
-          { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings/f15'}
+          { expand: true, flatten: true, src: ['src/app/settings/proxy.js'], dest: 'dist/temp/js/app/settings'}
         ]
       }
     },
@@ -107,9 +104,9 @@ module.exports = function(grunt) {
       },
       all: {
         options: {
-          name: 'app/main/dev',
+          name: 'app/main/all',
           baseUrl: "dist/temp/js",
-          out: "dist/dev/js/app.js",
+          out: "dist/all/js/app.js",
         }
       },
       dev: {

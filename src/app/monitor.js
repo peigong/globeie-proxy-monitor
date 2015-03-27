@@ -1,8 +1,7 @@
 /**
 * @module {focus} 打卡密集处理模块。
 */
-define(['request', 'app/utils'], function(request, utils){
-
+define(['app/utils'], function(utils){
     var minute = 60 * 1e3;
 
     function FocusMonitor(client, proxy){
@@ -14,12 +13,12 @@ define(['request', 'app/utils'], function(request, utils){
         this.mark = '';
         this.dateFilter = { include: {}, exclude: {} };
         this.timeFilter = [];
-        this.r = new request.Request();
         this.initialise();
     }
     FocusMonitor.prototype = {
         initialise: function(){
-            var that = this;
+            var that = this,
+                proxy = that.settings.proxy;
             utils.jsonp(proxy.settings, {}, function(data){
                 if(data){
                     if(data.hasOwnProperty('error')){
@@ -136,7 +135,7 @@ define(['request', 'app/utils'], function(request, utils){
         report: function(err){
             var that = this;
             var error = { floor: that.floor, err: err };
-            that.r.send(proxy.warning, error);
+            utils.send(proxy.warning, error);
         }
     };
 
