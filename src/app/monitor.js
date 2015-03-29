@@ -136,7 +136,8 @@ define(['app/utils'], function(utils){
             return settings;
         },
         report: function(err){
-            var that = this;
+            var that = this,
+                proxy = that.settings.proxy;
             var error = { floor: that.floor, err: err };
             utils.send(proxy.warning, error);
         }

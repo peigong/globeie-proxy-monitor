@@ -22,8 +22,8 @@ module.exports = function(grunt) {
           { expand: true, cwd: 'bower_components/jquery/dist', src: ['jquery.min.js'], dest: 'dist/client/f13/js/libs' },
           { expand: true, cwd: 'bower_components/bootstrap/dist', src: ['**'], dest: 'dist/client/f13/js/libs/bootstrap' },
           { expand: true, cwd: 'src/app', src: ['main/**', 'att.js', 'ads.js', 'counter.js', 'monitor.js', 'utils.js', 'settings/ads.js'], dest: 'dist/temp/js/app' },
-          { expand: true, cwd: 'src/moniter', src: ['css/**'], dest: 'dist/client/f13' },
-          { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/**'], dest: 'dist/client/all' },
+          { expand: true, cwd: 'src/moniter', src: ['css/base.css', 'css/style.css', 'css/img/**'], dest: 'dist/client/f13' },
+          { expand: true, cwd: 'src/moniter', src: ['all.html', 'css/base.css', 'css/all.css', 'css/img/**'], dest: 'dist/client/all' },
         ]
       },
       clone: {

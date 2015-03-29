@@ -1,5 +1,5 @@
 #
-dist
+dist/temp
 
 vendor
 composer.lock

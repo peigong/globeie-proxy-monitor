@@ -32,12 +32,12 @@ define(['app/utils', 'app/monitor', 'app/counter'], function(utils, Monitor, Cou
                     that.counter.report('301');
                 }
                 setTimeout(function(){
-                    thia.update();
+                    that.update();
                 }, 1e3);
             }, function(){
                 that.counter.report('202');
                 setTimeout(function(){
-                    thia.update();
+                    that.update();
                 }, 1e3);
             });
         },

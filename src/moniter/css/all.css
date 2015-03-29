@@ -1,0 +1,35 @@
+@charset "utf-8";
+@import "base.css";
+h1, h2 {
+    line-height: 200%;
+    text-align: center;
+}
+h1 {
+    width: 1160px;
+}
+h2 {
+    width: 200px;
+    margin-top: 30px;
+    font-size: 24px;
+    background:#fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    opacity: 0.8;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;
+    box-shadow: 0px 0px 0px;
+}
+/* 覆盖基础样式 */
+#warp{
+    padding: 100px 10px 10px 100px;
+}
+.text{
+    left: auto; 
+    top: auto; 
+    position: static;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    box-shadow: 0px 0px 0px;
+}
