@@ -1,5 +1,6 @@
 #
 dist/temp
+dist/monitor
 
 vendor
 composer.lock
