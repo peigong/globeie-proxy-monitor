@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 export default class MonitorComponent extends React.Component {
   render () {
     return (

@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import del from 'del';
 
 import { rollup } from 'rollup';
-import rollupConfig from './rollup.config.js';
+import conf from './conf';
 
 const clean = () => del([ 'dist/monitor' ]);
 export { clean };
@@ -13,7 +13,7 @@ export function styles() {
 }
 
 export function scripts() {
-	return rollup(rollupConfig)
+	return rollup(conf.rollup)
 	.then(bundle => {
 		return bundle.write({
 			format: 'cjs',
