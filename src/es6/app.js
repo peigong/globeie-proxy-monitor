@@ -1,7 +1,6 @@
-
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 import MonitorComponent from './components/monitor-component.jsx';
 
-const root = document.querySelector('main')
+const root = document.querySelector('main');
 
-render(<MonitorComponent />, root)
+render(<MonitorComponent />, root);
