@@ -3,7 +3,8 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+	// "extends": ["eslint:recommended", "eslint:all", "plugin:react/all"],
+	"extends": ["eslint:recommended"],
     "installedESLint": true,
     "parserOptions": {
         "ecmaFeatures": {

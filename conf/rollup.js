@@ -10,7 +10,7 @@ import buble from 'rollup-plugin-buble'
 import uglify from 'rollup-plugin-uglify';
 
 const config = {
-	entry: './src/es6/app.js',
+	entry: './src/es6/app.jsx',
     dest: './dist/monitor/js/app.js',
     format: 'iife',
 	sourceMap: true,
