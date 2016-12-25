@@ -2,7 +2,10 @@ import gulp from 'gulp';
 import del from 'del';
 
 import { rollup } from 'rollup';
+import { create } from 'browser-sync';
 import conf from './conf';
+
+const bs = create();
 
 const clean = () => del([ 'dist/monitor' ]);
 export { clean };
@@ -27,6 +30,9 @@ export function scripts() {
 	});
 }
 
+export function server(){
+    bs.init(conf.browserSync);
+}
 const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
 export { build };
 

@@ -7,6 +7,7 @@
   "description": "GLOBEIE 考勤机的WEB代理和监视器",
   "license": "MIT",
   "scripts": {
+    "server": "./node_modules/.bin/gulp server",
     "build:prod": "NODE_ENV=production ./node_modules/.bin/gulp",
     "build": "./node_modules/.bin/gulp"
   },
@@ -17,14 +18,18 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.18.0",
     "babel-register": "^6.18.0",
+    "browser-sync": "^2.18.5",
     "del": "^2.2.2",
     "eslint": "^3.12.2",
     "eslint-plugin-react": "^6.8.0",
     "gulp": "git@github.com:gulpjs/gulp.git#4.0",
     "rollup": "^0.37.0",
+    "rollup-plugin-ascii": "0.0.3",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^6.0.0",
     "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-filesize": "^1.0.1",
+    "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-node-globals": "^1.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-replace": "^1.1.1",
