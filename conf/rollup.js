@@ -18,7 +18,7 @@ const config = {
 		resolve(resolveConf),
 		commonjs(commonjsConf),
         globals(),
-        jsx({factory: 'React.createElement'}),
+        //jsx({factory: 'React.createElement'}),
         eslint(),
 		buble(),
 		ascii(),
