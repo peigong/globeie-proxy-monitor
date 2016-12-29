@@ -7,7 +7,7 @@
   "description": "GLOBEIE 考勤机的WEB代理和监视器",
   "license": "MIT",
   "scripts": {
-    "server": "./node_modules/.bin/gulp server",
+    "start": "./node_modules/.bin/gulp server",
     "build:prod": "NODE_ENV=production ./node_modules/.bin/gulp",
     "build": "./node_modules/.bin/gulp"
   },

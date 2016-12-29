@@ -31,6 +31,7 @@ export function scripts() {
 }
 
 export function server(){
+	console.log(conf.browserSync);
     bs.init(conf.browserSync);
 }
 const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
