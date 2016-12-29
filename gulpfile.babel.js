@@ -12,12 +12,14 @@ export { clean };
 
 export function html() {
 	return gulp.src('./src/html/**.html')
-	.pipe(gulp.dest('./dist/monitor/'));
+    .pipe(gulp.dest('./dist/monitor/'))
+    .pipe(bs.stream());
 }
 
 export function styles() {
 	return gulp.src('./src/less/**.less')
-	.pipe(gulp.dest('./dist/monitor/css/'));
+	.pipe(gulp.dest('./dist/monitor/css/'))
+    .pipe(bs.stream());
 }
 
 export function scripts() {
@@ -31,8 +33,8 @@ export function scripts() {
 }
 
 export function server(){
-	console.log(conf.browserSync);
     bs.init(conf.browserSync);
+    gulp.watch('./src/html/**.html').on('change', bs.reload);
 }
 const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
 export { build };
