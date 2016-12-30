@@ -1,3 +1,4 @@
+import build from './build.js';
 import resolve from 'rollup-plugin-node-resolve';
 import resolveConf from './resolve.js';
 import commonjs from 'rollup-plugin-commonjs';
@@ -12,7 +13,7 @@ import uglify from 'rollup-plugin-uglify';
 import filesize from 'rollup-plugin-filesize';
 
 const config = {
-	entry: './src/es6/app.jsx',
+	entry: build.scripts.src,
 	sourceMap: true,
 	plugins: [
 		resolve(resolveConf),

@@ -7,18 +7,17 @@ import conf from './conf';
 
 const bs = create();
 
-const clean = () => del([ 'dist/monitor' ]);
-export { clean };
+const clean = () => del([ conf.build.dest ]);
 
 export function html() {
-	return gulp.src('./src/html/**.html')
-    .pipe(gulp.dest('./dist/monitor/'))
+	return gulp.src(conf.build.html.src)
+    .pipe(gulp.dest(conf.build.html.dest))
     .pipe(bs.stream());
 }
 
 export function styles() {
-	return gulp.src('./src/less/**.less')
-	.pipe(gulp.dest('./dist/monitor/css/'))
+	return gulp.src(conf.build.styles.src)
+	.pipe(gulp.dest(conf.build.styles.dest))
     .pipe(bs.stream());
 }
 
@@ -27,16 +26,18 @@ export function scripts() {
 	.then(bundle => {
 		return bundle.write({
             format: 'iife',
-			dest: './dist/monitor/js/app.js'
+			dest: conf.build.scripts.dest
 		});
 	});
 }
 
-export function server(){
-    bs.init(conf.browserSync);
-    gulp.watch('./src/html/**.html').on('change', bs.reload);
-}
 const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
 export { build };
+
+const server = gulp.series(build, function(){
+    bs.init(conf.browserSync);
+    gulp.watch(conf.build.html.src).on('change', gulp.series(html, bs.reload));
+});
+export { server };
 
 export default build;
