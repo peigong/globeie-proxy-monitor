@@ -9,7 +9,9 @@ const styles = {
     dest: `${ dest }/css/`
 };
 const scripts = {
+    watch: `${ src }/es6/**/**.jsx`,
     src: `${ src }/es6/app.jsx`,
+    dirs: [ `${ dest }/js` ],
     dest: `${ dest }/js/app.js`
 };
 
