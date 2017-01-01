@@ -10,10 +10,6 @@ const bs = create();
 
 const clean = () => del([ conf.build.dest ]);
 
-function scripts(){
-    conf.build.scripts.dirs.forEach(mkdirp.sync);
-    return rollup();
-}
 function html() {
 	return gulp.src(conf.build.html.src)
     .pipe(gulp.dest(conf.build.html.dest))
@@ -24,14 +20,23 @@ function styles() {
 	.pipe(gulp.dest(conf.build.styles.dest))
     .pipe(bs.stream());
 }
+function scripts(){
+    conf.build.scripts.dirs.forEach(function(dir){
+        mkdirp.sync(dir, '0777');
+    });
+    return rollup()
+    .then(function(){
+        bs.reload(conf.build.scripts.dest);
+    });
+}
 
 const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
 export { build };
 
-const server = gulp.series(build, function(){
+const server = gulp.series(build, function watch(){
     bs.init(conf.browserSync);
-    gulp.watch(conf.build.scripts.watch).on('change', gulp.series(scripts, bs.reload));
     gulp.watch(conf.build.html.src).on('change', gulp.series(html, bs.reload));
+    gulp.watch(conf.build.scripts.watch).on('change', scripts);
 });
 export { server };
 

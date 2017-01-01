@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class MonitorComponent extends React.Component {
+export default class MonitorComponent extends Component {
 	render () {
 		return (
 			<h1> ♥ 啥，啥，啥！</h1>

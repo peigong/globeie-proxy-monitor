@@ -6,7 +6,6 @@ export default {
 		baseDir: [ dist ],
         index: 'index.html'
 	},
-	files: [ dist ],
 	middleware: [
 	]
 }
