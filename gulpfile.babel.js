@@ -34,8 +34,12 @@ const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
 export { build };
 
 const server = gulp.series(build, function watch(){
+    bs.emitter.on('change', function(e){
+        console.log('bs');
+        console.log(e);
+    });
     bs.init(conf.browserSync);
-    gulp.watch(conf.build.html.src).on('change', gulp.series(html, bs.reload));
+    gulp.watch(conf.build.html.src).on('change', html);
     gulp.watch(conf.build.scripts.watch).on('change', scripts);
 });
 export { server };
