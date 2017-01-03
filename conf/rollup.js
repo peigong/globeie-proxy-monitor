@@ -1,29 +1,32 @@
 import fs from 'fs';
 import conf from './build.js';
-import { rollup } from 'rollup';
+import * as rollup from 'rollup';
+import createWatcher from 'rollup-watch';
 import { getPlugins } from './rollup-plugins.js';
 
-let cache;
 let options = {
-    cache: cache,
 	sourceMap: true,
 	entry: conf.scripts.src,
+    dest: conf.scripts.dest
 };
 options.plugins = getPlugins(process.env.NODE_ENV);
 
-export default function build(){
-	return rollup(options)
+function watch(callback){
+    const watcher = createWatcher(rollup, options);
+    if('function' === typeof callback){
+        watcher.on('event', callback);
+    }
+}
+
+function build(){
+	return rollup.rollup(options)
 	.then(bundle => {
-        var result = bundle.generate({
-            // output format - 'amd', 'cjs', 'es', 'iife', 'umd'
-            format: 'iife'
-        });
-        cache = bundle;
-        fs.writeFileSync(conf.scripts.dest, result.code);
 		return bundle.write({
             format: 'iife',
             sourceMap: true,
-			dest: conf.scripts.dest
+            dest: conf.scripts.dest
 		});
 	});
 };
+
+export default { watch, build };

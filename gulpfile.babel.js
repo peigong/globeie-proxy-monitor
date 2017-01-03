@@ -8,6 +8,12 @@ import rollup from './conf/rollup.js';
 import { create } from 'browser-sync';
 const bs = create();
 
+const error = console.error.bind( console ); // eslint-disable-line no-console
+function stderr(message){
+    error(message);
+    bs.notify(message);
+}
+
 const clean = () => del([ conf.build.dest ]);
 
 function html() {
@@ -20,27 +26,32 @@ function styles() {
 	.pipe(gulp.dest(conf.build.styles.dest))
     .pipe(bs.stream());
 }
-function scripts(){
-    conf.build.scripts.dirs.forEach(function(dir){
-        mkdirp.sync(dir, '0777');
-    });
-    return rollup()
-    .then(function(){
-        bs.reload(conf.build.scripts.dest);
-    });
-}
 
-const build = gulp.series(clean, gulp.parallel(html, styles, scripts));
+const build = gulp.series(clean, gulp.parallel(html, styles, rollup.build));
 export { build };
 
-const server = gulp.series(build, function watch(){
-    bs.emitter.on('change', function(e){
-        console.log('bs');
-        console.log(e);
-    });
+const server = gulp.series(clean, gulp.parallel(html, styles), function watch(){
     bs.init(conf.browserSync);
     gulp.watch(conf.build.html.src).on('change', html);
-    gulp.watch(conf.build.scripts.watch).on('change', scripts);
+    rollup.watch(event => {
+        switch (event.code) {
+            case 'STARTING':
+                stderr('[BS] checking rollup-watch version...');
+                break;
+            case 'BUILD_START':
+                stderr('[BS] bundling...');
+                break;
+            case 'BUILD_END':
+                stderr('[BS] bundled in ' + event.duration + 'ms. Watching for changes...');
+                bs.reload(conf.build.scripts.dest);
+                break;
+            case 'ERROR':
+                stderr(`[BS] ${ event.error.message }`);
+                break;
+            default:
+                stderr('[BS] unknown event', event);
+        }
+    });
 });
 export { server };
 
