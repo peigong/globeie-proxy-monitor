@@ -2,9 +2,5 @@
 dist/temp
 dist/monitor
 
-vendor
-composer.phar
-composer.lock
-
 node_modules
 npm-debug.log
