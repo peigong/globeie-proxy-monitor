@@ -1,11 +1,13 @@
 import gulp from 'gulp';
 import del from 'del';
 import mkdirp from 'mkdirp';
+import loadPlugins from 'gulp-load-plugins';
+import { create } from 'browser-sync';
 
 import conf from './conf';
 import rollup from './conf/rollup.js';
 
-import { create } from 'browser-sync';
+const $ = loadPlugins();
 const bs = create();
 
 const error = console.error.bind( console ); // eslint-disable-line no-console
@@ -16,6 +18,18 @@ function stderr(message){
 
 const clean = () => del([ conf.build.dest ]);
 
+function att() {
+    gulp.src('vendor/**')
+    .pipe(gulp.dest('dist/server/att/proxy/vendor'));
+
+    gulp.src('res/**')
+    .pipe(gulp.dest('dist/server/att/haixuan'))
+    .pipe(gulp.dest('dist/server/att/haixuan/default'));
+
+    return gulp.src('src/att/**')
+    .pipe($.replace('@@SERVICE', 'http://10.0.7.5/shishi_all.asp'))
+    .pipe(gulp.dest('dist/server/att'));
+}
 function html() {
 	return gulp.src(conf.build.html.src)
     .pipe(gulp.dest(conf.build.html.dest))
@@ -27,7 +41,7 @@ function styles() {
     .pipe(bs.stream());
 }
 
-const build = gulp.series(clean, gulp.parallel(html, styles, rollup.build));
+const build = gulp.series(clean, gulp.parallel(att, html, styles, rollup.build));
 export { build };
 
 const server = gulp.series(clean, gulp.parallel(html, styles), function watch(){
