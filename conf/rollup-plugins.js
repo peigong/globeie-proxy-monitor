@@ -8,6 +8,9 @@ import resolve from 'rollup-plugin-node-resolve';
 import resolveConf from './resolve.js';
 import uglify from 'rollup-plugin-uglify';
 
+const DEV_SERVER_HOST = 'window.location.host';
+const PRO_SERVER_HOST = '\'10.0.3.16\'';
+
 const basePlugins = [
     buble(),
     commonjs(commonjsConf),
@@ -18,6 +21,10 @@ const ENV = {
         prePlugins: [
         ],
         postPlagins: [
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('development'),
+                'SERVER_HOST': DEV_SERVER_HOST
+            }),
             resolve(resolveConf)
         ]
     },
@@ -26,7 +33,10 @@ const ENV = {
             eslint()
         ],
         postPlagins: [
-            replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('development'),
+                'SERVER_HOST': DEV_SERVER_HOST
+            }),
             resolve(resolveConf)
         ]
     },
@@ -35,7 +45,10 @@ const ENV = {
             eslint()
         ],
         postPlagins: [
-            replace({ 'process.env.NODE_ENV': JSON.stringify('production') }),
+            replace({
+                'process.env.NODE_ENV': JSON.stringify('production'),
+                'SERVER_HOST': PRO_SERVER_HOST
+            }),
             uglify(),
             resolve(resolveConf)
         ]

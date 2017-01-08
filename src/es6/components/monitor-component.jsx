@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class MonitorComponent extends Component {
-	render () {
-		return (
-			<h1> ♥ 啥，啥，啥！</h1>
-		);
-	}
-}
+const MonitorComponent = ({ no }) => (
+    <div>
+        okok{ no }
+    </div>
+);
+
+MonitorComponent.propTypes = {
+};
+
+export default MonitorComponent;

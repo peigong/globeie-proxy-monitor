@@ -1,10 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MonitorComponent from './components/monitor-component.jsx';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import ads from '../reducers/ads.js';
+import Device3Container from '../containers/device3-container.jsx';
 
+const store = createStore(ads)
 const root = document.querySelector('main');
 
-render(<MonitorComponent />, root);
+render(
+    (
+        <Provider store={store}>
+            <Device3Container />
+        </Provider>
+    )
+, root);
 
 // class extends React.Component的顺序：
 // 
