@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
-import ads from '../models/ads.js';
 import Device3Component from '../components/device3-component.jsx';
 
 const mapStateToProps = (state = {}) => {
     let images = state.images || {};
     return {
-        images: Object.assign({}, ads, images)
+        images: Object.assign({}, images)
     };
 };
 

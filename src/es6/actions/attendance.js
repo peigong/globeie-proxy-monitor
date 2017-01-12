@@ -1,38 +1,38 @@
-export const ADS_FETCH = 'ADS_FETCH';
+export const ATTENDANCE_FETCH = 'ATTENDANCE_FETCH';
 
-function requestAds(){
+function requestAttendance(){
     return {
-        type: ADS_FETCH
+        type: ATTENDANCE_FETCH
     };
 }
-export function receiveAds(ads){
+export function receiveAttendance(ads){
     return {
-        type: ADS_FETCH,
+        type: ATTENDANCE_FETCH,
         status: 'success',
         response: ads
     };
 }
 function failHandler(err){
     return {
-        type: ADS_FETCH,
+        type: ATTENDANCE_FETCH,
         status: 'error',
         error: err.message
     };
 }
 
-export function fetchAds(){
+export function fetchAttendance(device){
     return function(dispatch){
-        dispatch(requestAds());
+        dispatch(requestAttendance());
 
         let host = SERVER_HOST;
         const options = {
             method: 'GET',
             mode: 'cors'
         };
-        return fetch(`http://${ host }/att/ads/fetch.php`, options)
+        return fetch(`http://${ host }/att/proxy/fetch.php`, options)
         .then(response => response.json())
         .then(json => {
-            let action = receiveAds(json);
+            let action = receiveAttendance(json);
             dispatch(action);
         })
         .catch(err => {

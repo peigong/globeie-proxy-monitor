@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Monitor from '../apps/monitor.jsx';
 import CarouselComponent from './carousel-component.jsx';
 
-const Device3Component = ({ images }) => (
+const Device3Component = ({ images = {} }) => (
     <div>
         <div>
             <CarouselComponent items={ images['1'] } />

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const CarouselItemComponent = ({ src }) => (
+const CarouselItemComponent = ({ src = '' }) => (
     <div>
         { src }
     </div>

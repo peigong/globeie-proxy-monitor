@@ -1,10 +1,17 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 
-const MonitorComponent = ({ no }) => (
-    <div>
-        okok{ no }
-    </div>
-);
+export class MonitorComponent extends Component {
+    componentWillMount(){
+        let { device, onWillMount } = this.props;
+        onWillMount(device);
+    }
+    render(){
+        let { name, number, date, time } = this.props;
+        return (
+            <div>{ name } => { number } => { date } => { time }</div>
+        );
+    }
+}
 
 MonitorComponent.propTypes = {
 };

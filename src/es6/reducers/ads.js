@@ -1,12 +1,15 @@
-import { FETCH_ADS } from '../actions/ads.js';
+import { ADS_FETCH } from '../actions/ads.js';
 
-export default function(state, action){
-    if(FETCH_ADS === action.type){
+export default function(state = {}, action){
+    if(ADS_FETCH === action.type){
         if(action.response){
-            console.log(action.response);
+            let images = action.response.images;
+            if(images){
+                return { images };
+            }
         }
         if(action.error){
-            console.log(action.error);
+            throw new Error(action.error);
         }
     }
     return state;
