@@ -1,4 +1,4 @@
-import { ADS_FETCH } from '../actions/ads.js';
+import { ADS_FETCH } from './action.js';
 
 export default function(state = {}, action){
     if(ADS_FETCH === action.type){

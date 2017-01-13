@@ -1,11 +1,11 @@
 export const ATTENDANCE_FETCH = 'ATTENDANCE_FETCH';
 
-function requestAttendance(){
+function requestAtt(){
     return {
         type: ATTENDANCE_FETCH
     };
 }
-export function receiveAttendance(ads){
+export function receiveAtt(ads){
     return {
         type: ATTENDANCE_FETCH,
         status: 'success',
@@ -20,9 +20,9 @@ function failHandler(err){
     };
 }
 
-export function fetchAttendance(device){
+export function fetchAtt(device){
     return function(dispatch){
-        dispatch(requestAttendance());
+        dispatch(requestAtt());
 
         let host = SERVER_HOST;
         const options = {
@@ -32,7 +32,7 @@ export function fetchAttendance(device){
         return fetch(`http://${ host }/att/proxy/fetch.php`, options)
         .then(response => response.json())
         .then(json => {
-            let action = receiveAttendance(json);
+            let action = receiveAtt(json);
             dispatch(action);
         })
         .catch(err => {

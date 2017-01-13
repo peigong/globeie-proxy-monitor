@@ -1,4 +1,4 @@
-import { ATTENDANCE_FETCH } from '../actions/attendance.js';
+import { ATTENDANCE_FETCH } from './action.js';
 
 export default function(state = {}, action){
     if(ATTENDANCE_FETCH === action.type){

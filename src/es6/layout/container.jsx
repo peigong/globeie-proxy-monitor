@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import Device3Component from '../components/device3-component.jsx';
+import { fetchAds } from '../ads/action.js';
+import Component from './component.jsx';
 
 const mapStateToProps = (state = {}) => {
     let images = state.images || {};
@@ -10,12 +11,11 @@ const mapStateToProps = (state = {}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onWillMount: device => dispatch(fetchAds())
     };
 };
 
-const Device3Container = connect(
+export default Container = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Device3Component);
-
-export default Device3Container;
+)(Component);

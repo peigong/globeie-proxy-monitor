@@ -10,7 +10,7 @@ const styles = {
 };
 const scripts = {
     watch: `${ src }/es6/**/**.jsx`,
-    src: `${ src }/es6/apps/device3.jsx`,
+    src: `${ src }/es6/device3.jsx`,
     dirs: [ `${ dest }/js` ],
     dest: `${ dest }/js/device3.js`
 };

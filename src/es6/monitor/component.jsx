@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 
-export class MonitorComponent extends Component {
+export default class Monitor extends Component {
     componentWillMount(){
         let { device, onWillMount } = this.props;
         onWillMount(device);
@@ -13,7 +13,5 @@ export class MonitorComponent extends Component {
     }
 }
 
-MonitorComponent.propTypes = {
+Monitor.propTypes = {
 };
-
-export default MonitorComponent;

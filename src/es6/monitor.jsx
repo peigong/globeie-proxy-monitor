@@ -2,8 +2,8 @@ import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-import reducers from '../reducers/attendance.js';
-import MonitorContainer from '../containers/monitor-container.jsx';
+import reducers from './att/reducer.js';
+import MonitorContainer from './monitor/container.jsx';
 
 const store = createStore(
     reducers,
@@ -12,10 +12,8 @@ const store = createStore(
     )
 );
 
-const Monitor = ({ device }) => (
-    <Provider store={store}>
+export default Monitor = ({ device }) => (
+    <Provider store={ store }>
         <MonitorContainer device={ device } />
     </Provider>
 );
-
-export default Monitor;
