@@ -9,3 +9,7 @@ render((
             <Monitor device="3" />
         </Layout>
 ), root);
+
+// setTimeout(function(){
+//     location.reload(true);
+// }, 30 * 60 * 1e3);
