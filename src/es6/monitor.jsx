@@ -12,8 +12,10 @@ const store = createStore(
     )
 );
 
-export default Monitor = ({ device }) => (
+const Monitor = ({ device }) => (
     <Provider store={ store }>
         <MonitorContainer device={ device } />
     </Provider>
 );
+
+export default Monitor;

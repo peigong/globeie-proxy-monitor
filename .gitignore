@@ -1,6 +1,7 @@
 #
 dist/temp
 dist/monitor
+dist/monitor.zip
 
 node_modules
 npm-debug.log

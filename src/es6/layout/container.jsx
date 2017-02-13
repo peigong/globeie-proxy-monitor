@@ -15,7 +15,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default Container = connect(
+const Container = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Component);
+
+export default Container;
