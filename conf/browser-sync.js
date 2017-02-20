@@ -14,9 +14,10 @@ export default {
         logger(),
         function(req, res, next){
             let url = req.url;
-            let reg = /php$/;
+            let reg = /php/;
             if(reg.test(url)){
-                let filename = join(__dirname, '..', 'stub', url.replace(reg, 'json'));
+                let arr = url.split('php');
+                let filename = join(__dirname, '..', 'stub', arr[0]) + 'json';
                 readFile(filename, function(err, data){
                     if(err){
                         data = err.message;

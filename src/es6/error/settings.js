@@ -38,15 +38,15 @@ export const thresholds = new Map([
     [
         '102',
         new Map([
-            [ 'toplimit': 300,
-            [ 'threshold': 0.05
+            [ 'toplimit', 300 ],
+            [ 'threshold', 0.05 ]
         ])
     ],
     [
         'default',
         new Map([
-            [ 'toplimit': 100,
-            [ 'threshold': 0.1
+            [ 'toplimit', 100 ],
+            [ 'threshold', 0.1 ]
         ])
     ]
 ]);

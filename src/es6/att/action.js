@@ -29,7 +29,7 @@ export function fetchAtt(device){
             method: 'GET',
             mode: 'cors'
         };
-        return fetch(`http://${ host }/att/proxy/fetch.php`, options)
+        return fetch(`http://${ host }/att/proxy/fetch.php?device=${ device }`, options)
         .then(response => response.json())
         .then(json => {
             let action = receiveAtt(json);
