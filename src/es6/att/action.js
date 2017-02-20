@@ -19,11 +19,9 @@ export function receiveAtt(att){
 function throwError(code, device){
     return (dispatch) => {
         dispatch(reportError(code));
-        return (dispatch) => {
-            setTimeout(() => {
-                dispatch(fetchAtt(device));
-            }, 1e3);
-        };
+        setTimeout(() => {
+            dispatch(fetchAtt(device));
+        }, 1e3);
     };
 }
 

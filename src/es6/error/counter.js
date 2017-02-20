@@ -8,7 +8,7 @@ export default class ErrorCounter {
         this.initialise();
     }
     initialise(){
-        errors.forEach((val, key, map) => {
+        Object.keys(errors).forEach((key) => {
             this.total.set(key, 0);
             // 历史参数floor为楼层，在0.2.0版本修改为设备编号
             this.counter.set(key, { floor: this.device, err: key, count: 0 });
@@ -21,10 +21,10 @@ export default class ErrorCounter {
         let error = this.counter.get(err);
         error.count ++;
 
-        let { toplimit, threshold } = thresholds.get('default');
-        if(thresholds.has(err)){
-            toplimit = thresholds.get(err).get('toplimit');
-            threshold = thresholds.get(err).get('threshold');
+        let { toplimit, threshold } = thresholds['default'];
+        if(thresholds.hasOwnProperty(err)){
+            toplimit = thresholds[err]['toplimit'];
+            threshold = thresholds[err]['threshold'];
         }
         if(total > toplimit){
             let rate = error.count / total;
@@ -35,7 +35,12 @@ export default class ErrorCounter {
                     method: 'GET',
                     mode: 'cors'
                 };
-                fetch(`http://${ host }/att/proxy/warning.php`, options, error)
+                let params = Object.keys(error)
+                    .map((key) => `${ key }=${ error[key] }`)
+                    .join('&');
+
+                console.log(params);
+                fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options)
             }
 
             // 达到监测总数，没有达到故障阀值，不必上报错误

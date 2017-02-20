@@ -20,13 +20,11 @@ export function receiveAds(ads){
 function throwError(code){
     return (dispatch) => {
         dispatch(reportError(code));
-        dispatch(receiveAds({ images }));
+        dispatch(receiveAds(images));
 
-        return (dispatch) => {
-            setTimeout(() => {
-                dispatch(fetchAds());
-            }, 1e3);
-        };
+        setTimeout(() => {
+            dispatch(fetchAds());
+        }, 1e3);
     };
 }
 
