@@ -1,3 +1,6 @@
+import images from './images.js';
+import { reportError } from '../error/action.js';
+
 export const ADS_FETCH = 'ADS_FETCH';
 
 function requestAds(){
@@ -5,6 +8,7 @@ function requestAds(){
         type: ADS_FETCH
     };
 }
+
 export function receiveAds(ads){
     return {
         type: ADS_FETCH,
@@ -12,11 +16,17 @@ export function receiveAds(ads){
         response: ads
     };
 }
-function failHandler(err){
-    return {
-        type: ADS_FETCH,
-        status: 'error',
-        error: err.message
+
+function throwError(code){
+    return (dispatch) => {
+        dispatch(reportError(code));
+        dispatch(receiveAds({ images }));
+
+        return (dispatch) => {
+            setTimeout(() => {
+                dispatch(fetchAds());
+            }, 1e3);
+        };
     };
 }
 
@@ -32,11 +42,28 @@ export function fetchAds(){
         return fetch(`http://${ host }/att/ads/fetch.php`, options)
         .then(response => response.json())
         .then(json => {
-            let action = receiveAds(json);
-            dispatch(action);
+            if(json.hasOwnProperty('error')){
+                if(json['error']){
+                    dispatch(throwError(json['error']));
+                }else{
+                    if(json.images.hasOwnProperty('1') && 
+                        json.images.hasOwnProperty('2') && 
+                        json.images.hasOwnProperty('3')) {
+                        dispatch(receiveAds(json.images));
+                    }else{
+                        // 轮播广告服务器端没有检索到图片文件
+                        dispatch(throwError('404'));
+                    }
+                }
+            }else{ // 轮播广告服务器端数据不包含错误编码字段
+                dispatch(throwError('403'));
+            }
         })
         .catch(err => {
-            dispatch(failHandler(err));
+            // 轮播广告不明确的服务器异常
+            dispatch(throwError('401'));
+            // 轮播广告服务器端数据为空
+            // dispatch(throwError('402'));
         });
     };
 };
