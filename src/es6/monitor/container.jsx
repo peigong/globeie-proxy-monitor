@@ -2,9 +2,8 @@ import { connect } from 'react-redux';
 import { fetchAtt } from '../att/action.js';
 import Component from './component.jsx';
 
-const mapStateToProps = (state) => {
-    let { name, number, date, time } = state;
-    return { name, number, date, time };
+const mapStateToProps = (state = {}) => {
+    return state.att;
 };
 
 const mapDispatchToProps = (dispatch) => {

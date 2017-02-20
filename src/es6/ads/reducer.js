@@ -3,10 +3,8 @@ import { ADS_FETCH } from './action.js';
 export default function(state = {}, action){
     if(ADS_FETCH === action.type){
         if(action.response){
-            let images = action.response.images;
-            if(images){
-                return { images };
-            }
+            state = action.response.images || {};
+            return state;
         }
         if(action.error){
             throw new Error(action.error);

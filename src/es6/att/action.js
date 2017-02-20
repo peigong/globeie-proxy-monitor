@@ -5,11 +5,11 @@ function requestAtt(){
         type: ATTENDANCE_FETCH
     };
 }
-export function receiveAtt(ads){
+export function receiveAtt(att){
     return {
         type: ATTENDANCE_FETCH,
         status: 'success',
-        response: ads
+        response: att
     };
 }
 function failHandler(err){

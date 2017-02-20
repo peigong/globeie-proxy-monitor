@@ -3,15 +3,13 @@ import { fetchAds } from '../ads/action.js';
 import Component from './component.jsx';
 
 const mapStateToProps = (state = {}) => {
-    let images = state.images || {};
-    return {
-        images: Object.assign({}, images)
-    };
+    let ads = Object.assign({}, state.ads);
+    return { ads };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onWillMount: device => dispatch(fetchAds())
+        onWillMount: () => dispatch(fetchAds())
     };
 };
 

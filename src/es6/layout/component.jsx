@@ -7,16 +7,16 @@ export default class Layout extends Component {
         onWillMount();
     }
     render(){
-        let { children, images } = this.props;
+        let { children, ads } = this.props;
         return (
             <div>
                 <div>
-                    <CarouselComponent items={ images['1'] } />
+                    <CarouselComponent items={ ads['1'] } />
                 </div>
                 { children }
                 <div>
-                    <CarouselComponent items={ images['2'] } />
-                    <CarouselComponent items={ images['3'] } />
+                    <CarouselComponent items={ ads['2'] } />
+                    <CarouselComponent items={ ads['3'] } />
                 </div>
             </div>
         );
