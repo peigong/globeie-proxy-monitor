@@ -1,4 +1,4 @@
-import { errors, thresholds } from 'errors';
+import { errors, thresholds } from './settings.js';
 
 export default class ErrorCounter {
     constructor(device){
