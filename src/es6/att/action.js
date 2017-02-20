@@ -2,11 +2,11 @@ import { reportError } from '../error/action.js';
 
 export const ATTENDANCE_FETCH = 'ATTENDANCE_FETCH';
 
-function requestAtt(){
-    return {
-        type: ATTENDANCE_FETCH
-    };
-}
+// function requestAtt(){
+//     return {
+//         type: ATTENDANCE_FETCH
+//     };
+// }
 
 export function receiveAtt(att){
     return {
@@ -19,6 +19,7 @@ export function receiveAtt(att){
 function throwError(code, device){
     return (dispatch) => {
         dispatch(reportError(code));
+        dispatch(receiveAtt(null));
         setTimeout(() => {
             dispatch(fetchAtt(device));
         }, 1e3);
@@ -27,7 +28,7 @@ function throwError(code, device){
 
 export function fetchAtt(device){
     return function(dispatch){
-        dispatch(requestAtt());
+        // dispatch(requestAtt());
 
         let host = SERVER_HOST;
         const options = {

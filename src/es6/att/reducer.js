@@ -2,7 +2,7 @@ import { ATTENDANCE_FETCH } from './action.js';
 
 export default function(state = {}, action){
     if(ATTENDANCE_FETCH === action.type){
-        try{
+        if(action.response){
             let data = action.response;
             let name = data.name || '';
             let number = data.number || '';
@@ -11,7 +11,8 @@ export default function(state = {}, action){
             let time = arr.pop();
             let date = arr.pop();
             return { name, number, date, time };
-        }catch(ex){
+        }else{
+            return null;
         }
     }
     return state;
