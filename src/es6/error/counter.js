@@ -39,7 +39,6 @@ export default class ErrorCounter {
                     .map((key) => `${ key }=${ error[key] }`)
                     .join('&');
 
-                console.log(params);
                 fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options)
             }
 
