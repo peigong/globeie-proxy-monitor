@@ -1,5 +1,6 @@
 import eslint from 'rollup-plugin-eslint';
 import babel from 'rollup-plugin-babel'
+import babelConf from './babel.js';
 import commonjs from 'rollup-plugin-commonjs';
 import commonjsConf from './commonjs.js';
 import globals from 'rollup-plugin-node-globals'
@@ -15,10 +16,7 @@ const PRO_SERVER_HOST = '\'10.0.3.16\'';
 
 const basePlugins = [
     postcss(postcssConf),
-    babel({
-        // babelrc: false,
-        exclude: 'node_modules/**'
-    }),
+    babel(babelConf),
     commonjs(commonjsConf),
     globals()
 ];
