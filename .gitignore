@@ -1,4 +1,6 @@
 #
+src/**/*.css.js
+
 dist/temp
 dist/monitor
 dist/monitor.zip

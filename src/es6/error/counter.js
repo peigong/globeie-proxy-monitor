@@ -39,7 +39,7 @@ export default class ErrorCounter {
                     .map((key) => `${ key }=${ error[key] }`)
                     .join('&');
 
-                fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options)
+                fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options);
             }
 
             // 达到监测总数，没有达到故障阀值，不必上报错误

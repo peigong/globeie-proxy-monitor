@@ -1,4 +1,3 @@
-import fs from 'fs';
 import conf from './build.js';
 import * as rollup from 'rollup';
 import createWatcher from 'rollup-watch';

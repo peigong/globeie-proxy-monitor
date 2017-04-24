@@ -160,6 +160,6 @@ export default class FocusMonitor {
             method: 'GET',
             mode: 'cors'
         };
-        fetch(`http://${ host }/att/proxy/warning.php?floor=${ this.device }&err=${ err }`, options)
+        fetch(`http://${ host }/att/proxy/warning.php?floor=${ this.device }&err=${ err }`, options);
     }
 }
