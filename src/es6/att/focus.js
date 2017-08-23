@@ -93,7 +93,7 @@ export default class FocusMonitor {
             let now = new Date(), 
                 nowTime = now.getTime(),
                 nowDay = now.getDay(),
-                mark = toDate([now.getFullYear(), (now.getMonth() + 1), now.getDate()].join('-'));
+                mark = toDate([now.getFullYear(), (now.getMonth() + 1), now.getDate()].join('-')),
                 originalDate = toDate([date, time].join(' '));
 
             if((nowDay > 0) && (nowDay < 6)){//周一至周五，工作日

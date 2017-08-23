@@ -37,4 +37,4 @@ export { fetch };
 export default {
     send,
     fetch
-}
+};
