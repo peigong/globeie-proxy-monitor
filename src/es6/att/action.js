@@ -1,3 +1,4 @@
+import util from '../util.js';
 import { reportError } from '../error/action.js';
 
 export const ATTENDANCE_FETCH = 'ATTENDANCE_FETCH';
@@ -31,12 +32,13 @@ export function fetchAtt(device){
         // dispatch(requestAtt());
 
         let host = SERVER_HOST;
-        const options = {
-            method: 'GET',
-            mode: 'cors'
-        };
-        return fetch(`http://${ host }/att/proxy/fetch.php?device=${ device }`, options)
-        .then(response => response.json())
+        // const options = {
+        //     method: 'GET',
+        //     mode: 'cors'
+        // };
+        // return fetch(`http://${ host }/att/proxy/fetch.php?device=${ device }`, options)
+        return util.fetch(`http://${ host }/att/proxy/fetch.php?device=${ device }`)
+        // .then(response => response.json())
         .then(json => {
             if(json.hasOwnProperty('error')){
                 if(json['error']){

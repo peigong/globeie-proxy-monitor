@@ -1,3 +1,4 @@
+import util from '../util.js';
 import { errors, thresholds } from './settings.js';
 
 export default class ErrorCounter {
@@ -31,15 +32,16 @@ export default class ErrorCounter {
             //监测总数到达限制条件，且到达故障率阀值
             if(rate > threshold){
                 let host = SERVER_HOST;
-                const options = {
-                    method: 'GET',
-                    mode: 'cors'
-                };
+                // const options = {
+                //     method: 'GET',
+                //     mode: 'cors'
+                // };
                 let params = Object.keys(error)
                     .map((key) => `${ key }=${ error[key] }`)
                     .join('&');
 
-                fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options);
+                // fetch(`http://${ host }/att/proxy/warning.php?${ params }`, options);
+                util.send(`http://${ host }/att/proxy/warning.php?${ params }`);
             }
 
             // 达到监测总数，没有达到故障阀值，不必上报错误

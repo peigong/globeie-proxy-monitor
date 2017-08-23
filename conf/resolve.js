@@ -1,6 +1,6 @@
 
 export default {
-    // jsnext: true,
+    jsnext: true
     // main: true,
     // browser: true
 };

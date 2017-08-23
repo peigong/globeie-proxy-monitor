@@ -1,7 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { AttMonitor } from './component.css';
-
-console.log(AttMonitor);
+// import { AttMonitor } from './component.css';
 
 export default class Monitor extends Component {
     componentWillMount(){

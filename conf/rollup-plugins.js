@@ -11,7 +11,8 @@ import resolve from 'rollup-plugin-node-resolve';
 import resolveConf from './resolve.js';
 import uglify from 'rollup-plugin-uglify';
 
-const DEV_SERVER_HOST = 'window.location.host';
+// const DEV_SERVER_HOST = 'window.location.host';
+const DEV_SERVER_HOST = '\'10.86.40.71:3000\'';
 const PRO_SERVER_HOST = '\'10.0.3.16\'';
 
 const basePlugins = [

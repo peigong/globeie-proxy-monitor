@@ -1,3 +1,4 @@
+import util from '../util.js';
 import images from './images.js';
 import { reportError } from '../error/action.js';
 
@@ -33,12 +34,13 @@ export function fetchAds(){
         dispatch(requestAds());
 
         let host = SERVER_HOST;
-        const options = {
-            method: 'GET',
-            mode: 'cors'
-        };
-        return fetch(`http://${ host }/att/ads/fetch.php`, options)
-        .then(response => response.json())
+        // const options = {
+        //     method: 'GET',
+        //     mode: 'cors'
+        // };
+        // return fetch(`http://${ host }/att/ads/fetch.php`, options)
+        return util.fetch(`http://${ host }/att/ads/fetch.php`)
+        // .then(response => response.json())
         .then(json => {
             if(json.hasOwnProperty('error')){
                 if(json['error']){

@@ -1,3 +1,5 @@
+import util from '../util.js';
+
 const minute = 60 * 1e3;
 
 function createDate(year, month, date, hours, minutes, seconds){
@@ -35,12 +37,13 @@ export default class FocusMonitor {
     }
     initialise(){
         let host = SERVER_HOST;
-        const options = {
-            method: 'GET',
-            mode: 'cors'
-        };
-        return fetch(`http://${ host }/att/proxy/settings.php`, options)
-        .then(response => response.json())
+        // const options = {
+        //     method: 'GET',
+        //     mode: 'cors'
+        // };
+        // return fetch(`http://${ host }/att/proxy/settings.php`, options)
+        return util.fetch(`http://${ host }/att/proxy/settings.php`)
+        // .then(response => response.json())
         .then(json => {
             if(json.hasOwnProperty('error')){
                 if(json['error']){
@@ -156,10 +159,11 @@ export default class FocusMonitor {
     }
     report(err){
         let host = SERVER_HOST;
-        const options = {
-            method: 'GET',
-            mode: 'cors'
-        };
-        fetch(`http://${ host }/att/proxy/warning.php?floor=${ this.device }&err=${ err }`, options);
+        // const options = {
+        //     method: 'GET',
+        //     mode: 'cors'
+        // };
+        // fetch(`http://${ host }/att/proxy/warning.php?floor=${ this.device }&err=${ err }`, options);
+        util.send(`http://${ host }/att/proxy/warning.php?floor=${ this.device }&err=${ err }`);
     }
 }
