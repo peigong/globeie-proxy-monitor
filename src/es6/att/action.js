@@ -49,6 +49,9 @@ export function fetchAtt(device){
             }else{ // 考勤代理服务器返回的数据不包含异常编码
                 dispatch(throwError('302'));
             }
+            setTimeout(() => {
+                dispatch(fetchAtt(device));
+            }, 1e3);
         })
         .catch(err => {
             // 考勤代理服务器连接异常
