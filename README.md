@@ -11,7 +11,7 @@
 3. `npm run build:prod`：构建部署环境版本
 4. `npm run start`：构建实时监听的开发版本
 
-### 安装PHP和Composer ###
+### PHP集成环境 ###
 
 1. 参照`http://www.wampserver.com/en/`，安装PHP集成环境。
 2. 检查php.ini配置文件，使用`;`注释掉`open_basedir`、`disable_functions`、`disable_classes`三个配置。
