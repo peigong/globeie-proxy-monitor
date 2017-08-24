@@ -3,9 +3,10 @@ import del from 'del';
 import mkdirp from 'mkdirp';
 import loadPlugins from 'gulp-load-plugins';
 import { create } from 'browser-sync';
+import esModules from 'es-css-modules';
 
-import conf from './conf';
-import rollup from './conf/rollup.js';
+import conf from './build/conf';
+import rollup from './build/rollup.js';
 
 const $ = loadPlugins();
 const bs = create();
@@ -37,6 +38,7 @@ function html() {
 }
 function styles() {
 	return gulp.src(conf.build.styles.src)
+    .pipe($.postcss(conf.postcss.plugins))
 	.pipe(gulp.dest(conf.build.styles.dest))
     .pipe(bs.stream());
 }

@@ -1,5 +1,5 @@
 #
-src/**/*.css.js
+**.m.css.js
 
 dist/temp
 dist/monitor
