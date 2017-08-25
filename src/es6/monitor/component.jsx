@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
-import { AttMonitor } from './component.m.css';
-console.log(AttMonitor);
+import { attMonitor } from './component.m.css';
+console.log(attMonitor);
 
 export default class Monitor extends Component {
     componentWillMount(){
@@ -11,7 +11,7 @@ export default class Monitor extends Component {
     render(){
         let { name, number, date, time } = this.props;
         return (
-            <div>{ name } => { number } => { date } => { time }</div>
+            <div className={ attMonitor }>{ name } => { number } => { date } => { time }</div>
         );
     }
 }

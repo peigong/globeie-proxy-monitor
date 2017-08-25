@@ -15,7 +15,6 @@ const scripts = {
 };
 
 export default {
-    src,
     dest,
     html,
     styles,

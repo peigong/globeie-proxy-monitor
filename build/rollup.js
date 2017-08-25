@@ -3,8 +3,9 @@ import * as rollup from 'rollup';
 import createWatcher from 'rollup-watch';
 
 let options = {
-	sourceMap: true,
-	entry: conf.build.scripts.src,
+    format: 'iife',
+    sourceMap: true,
+    entry: conf.build.scripts.src,
     dest: conf.build.scripts.dest
 };
 options.plugins = conf.getPlugins(process.env.NODE_ENV);
@@ -17,13 +18,13 @@ function watch(callback){
 }
 
 function build(){
-	return rollup.rollup(options)
+    return rollup.rollup(options)
 	.then(bundle => {
-		return bundle.write({
-            format: 'iife',
-            sourceMap: true,
-            dest: conf.build.scripts.dest
-		});
+       return bundle.write({
+           format: 'iife',
+           sourceMap: true,
+           dest: conf.build.scripts.dest
+        });
 	});
 };
 

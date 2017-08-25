@@ -1,17 +1,6 @@
 
 export default {
-    include: [
-        'node_modules/fbjs/**',
-        'node_modules/hoist-non-react-statics/**',
-        'node_modules/invariant/**',
-        'node_modules/object-assign/**',
-        'node_modules/deep-diff/**',
-        'node_modules/prop-types/**',
-        'node_modules/react/**',
-        'node_modules/react-dom/**',
-        'node_modules/react-redux/**',
-        'node_modules/redux-logger/**'
-    ],
+    include: 'node_modules/**',
     namedExports: {
         'node_modules/react/react.js': [
             'createElement',

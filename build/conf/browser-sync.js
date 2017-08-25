@@ -18,7 +18,7 @@ export default {
             let reg = /php/;
             if(reg.test(url)){
                 let arr = url.split('php');
-                let filename = join(__dirname, '..', 'stub', arr[0]) + 'json';
+                let filename = join(__dirname, '../..', 'stub', arr[0]) + 'json';
                 let query = parse(url, true).query || {};
                 let callback = query.callback || '';
                 readFile(filename, { encoding: 'utf-8' }, function(err, data){
