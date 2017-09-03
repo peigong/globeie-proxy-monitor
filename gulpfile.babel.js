@@ -1,9 +1,7 @@
 import gulp from 'gulp';
 import del from 'del';
-import mkdirp from 'mkdirp';
 import loadPlugins from 'gulp-load-plugins';
 import { create } from 'browser-sync';
-import esModules from 'es-css-modules';
 
 import conf from './build/conf';
 import rollup from './build/rollup.js';

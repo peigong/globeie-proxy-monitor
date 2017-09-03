@@ -58,5 +58,4 @@ function getPlugins(key){
     let env = ENV[key];
     return [].concat(env.prePlugins, basePlugins, env.postPlagins);
 }
-export { getPlugins };
 export default getPlugins;
